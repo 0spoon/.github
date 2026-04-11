@@ -1,3 +1,13 @@
+<p align="center">
+  <img src="./assets/0spoon-full.webp" alt="0spoon" width="800">
+</p>
+
+<p align="center">
+  <a href="#license"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="License: MIT"></a>
+  <img src="https://img.shields.io/badge/local--first-yes-brightgreen.svg?style=flat-square" alt="Local-first">
+  <img src="https://img.shields.io/badge/filesystem--native-yes-brightgreen.svg?style=flat-square" alt="Filesystem-native">
+</p>
+
 # 0spoon
 
 > _"Do not try to bend the spoon. That's impossible. Instead, only try to realize the truth... there is no spoon."_
@@ -14,6 +24,11 @@ The agent doesn't know your project. It doesn't remember yesterday. It commits t
 
 ### [Seam](https://github.com/0spoon/seam) — _where ideas connect_
 
+![Last commit](https://img.shields.io/github/last-commit/0spoon/seam?style=flat-square)
+![Top language](https://img.shields.io/github/languages/top/0spoon/seam?style=flat-square)
+![Open issues](https://img.shields.io/github/issues/0spoon/seam?style=flat-square)
+![License](https://img.shields.io/github/license/0spoon/seam?style=flat-square)
+
 A local-first personal knowledge system that doubles as **persistent memory for your agents.** Notes are plain `.md` files with YAML frontmatter. An MCP server exposes 40+ tools so Claude Code, Cursor, Windsurf — anything MCP-compatible — can search your notes, create new ones, track tasks, traverse a knowledge graph, and collaborate through shared research labs. What one agent learns, the next one knows, because they're working in the same files you are.
 
 Go backend (REST + WebSocket), React web UI, Bubble Tea TUI. SQLite with FTS5, ChromaDB for vectors, Ollama for local LLM by default. OpenAI and Anthropic are one config line away if you want them.
@@ -21,6 +36,11 @@ Go backend (REST + WebSocket), React web UI, Bubble Tea TUI. SQLite with FTS5, C
 **Not a memory layer.** A workspace: notes, projects, tasks, wikilinks, semantic search, daily briefings, and an autonomous librarian that organizes untouched notes for you.
 
 ### [projd](https://github.com/0spoon/projd) — _a harness for long-running and parallel agents_
+
+![Last commit](https://img.shields.io/github/last-commit/0spoon/projd?style=flat-square)
+![Top language](https://img.shields.io/github/languages/top/0spoon/projd?style=flat-square)
+![Open issues](https://img.shields.io/github/issues/0spoon/projd?style=flat-square)
+![License](https://img.shields.io/github/license/0spoon/projd?style=flat-square)
 
 Claude Code works great in a single sitting. Long sessions and parallel agents fall apart: lost context, wrong branches, half-finished code, agents stepping on each other. projd adds the missing pieces — session continuity via `.projd/HANDOFF.md`, git policy enforced by PreToolUse hooks before commands execute, a feature lifecycle with dependency tracking, smoke-test gates, and branch-per-feature worktree isolation.
 
