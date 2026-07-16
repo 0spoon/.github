@@ -12,65 +12,40 @@
 
 > _"Do not try to bend the spoon. That's impossible. Instead, only try to realize the truth... there is no spoon."_
 
-Open-source tools for working with AI coding agents — **without pretending the agent is in charge.**
+Open-source infrastructure for AI coding agents — **without pretending the agent is in charge.**
 
-The agent doesn't know your project. It doesn't remember yesterday. It commits to the wrong branch, forgets why it made a decision, and starts every conversation from zero. The fix isn't a smarter model. The fix is infrastructure: durable memory, enforced guardrails, and artifacts you can read without the agent in the loop.
+The agent doesn't know your project. It doesn't remember yesterday. It forgets why it made a decision and starts every conversation from zero. The fix isn't a smarter model. The fix is infrastructure: durable memory, real coordination primitives, and artifacts you can read without the agent in the loop.
 
-0spoon builds that infrastructure. Local-first. Filesystem-native. Single-user. Markdown on disk, git worktrees on disk, nothing hiding in a vendor's database.
+0spoon builds that infrastructure. Local-first. Filesystem-native. Single-user. Markdown on disk, nothing hiding in a vendor's database.
 
 ---
 
 ## Projects
 
-### [Seam](https://github.com/0spoon/seam) — _where ideas connect_
+### [Seamless](https://github.com/0spoon/seamless) — _memory and coordination for agent fleets_
 
-![Last commit](https://img.shields.io/github/last-commit/0spoon/seam?style=flat-square)
-![Top language](https://img.shields.io/github/languages/top/0spoon/seam?style=flat-square)
-![Open issues](https://img.shields.io/github/issues/0spoon/seam?style=flat-square)
-![License](https://img.shields.io/github/license/0spoon/seam?style=flat-square)
+![Last commit](https://img.shields.io/github/last-commit/0spoon/seamless?style=flat-square)
+![Top language](https://img.shields.io/github/languages/top/0spoon/seamless?style=flat-square)
+![Open issues](https://img.shields.io/github/issues/0spoon/seamless?style=flat-square)
+![License](https://img.shields.io/github/license/0spoon/seamless?style=flat-square)
 
-A local-first personal knowledge system that doubles as **persistent memory for your agents.** Notes are plain `.md` files with YAML frontmatter. An MCP server exposes 40+ tools so Claude Code, Cursor, Windsurf — anything MCP-compatible — can search your notes, create new ones, track tasks, traverse a knowledge graph, and collaborate through shared research labs. What one agent learns, the next one knows, because they're working in the same files you are.
+A local-first memory and coordination substrate for AI coding agents. Seamless gives a fleet of agents — Claude Code and any MCP-compatible client — a shared, durable memory and a way to divide work without colliding: memories with a supersession lifecycle, hybrid recall, a dependency-aware task queue with lease-based claiming, captured plans, and research trials. What one agent learns, the next one knows.
 
-Go backend (REST + WebSocket), React web UI, Bubble Tea TUI. SQLite with FTS5, ChromaDB for vectors, Ollama for local LLM by default. OpenAI and Anthropic are one config line away if you want them.
+Durable knowledge is stored as markdown files on disk. A single Go binary indexes it, serves it over MCP, and renders a web console for inspection. No CGO, no Node, no separate vector engine, no cloud account.
 
-**Not a memory layer.** A workspace: notes, projects, tasks, wikilinks, semantic search, daily briefings, and an autonomous librarian that organizes untouched notes for you.
-
-### [projd](https://github.com/0spoon/projd) — _a harness for long-running and parallel agents_
-
-![Last commit](https://img.shields.io/github/last-commit/0spoon/projd?style=flat-square)
-![Top language](https://img.shields.io/github/languages/top/0spoon/projd?style=flat-square)
-![Open issues](https://img.shields.io/github/issues/0spoon/projd?style=flat-square)
-![License](https://img.shields.io/github/license/0spoon/projd?style=flat-square)
-
-Claude Code works great in a single sitting. Long sessions and parallel agents fall apart: lost context, wrong branches, half-finished code, agents stepping on each other. projd adds the missing pieces — session continuity via `.projd/HANDOFF.md`, git policy enforced by PreToolUse hooks before commands execute, a feature lifecycle with dependency tracking, smoke-test gates, and branch-per-feature worktree isolation.
-
-You describe what you want. projd decomposes it into features with acceptance criteria, dispatches up to 20 agents in dependency-aware waves, and hands you PRs. You review. Or don't — vibes mode closes the loop with an automated reviewer that fixes what it can and merges what passes.
-
-**A project template, not a platform.** It lives inside your repo alongside your code. Nothing global to install, no daemon, no desktop app.
-
----
-
-## Why these two together
-
-projd is **how** agents do the work. Seam is **where** they remember it. The pairing is the point:
-
-- An agent dispatched by projd calls `session_start` against Seam, gets a briefing of prior decisions and relevant notes, implements the feature, and writes findings back before closing the session. The next agent — or you, next week — picks up with context intact.
-- Seam's research lab lets parallel projd agents on the same problem share trials, decisions, and dead ends, instead of each one rediscovering them in isolation.
-- Your notes in Seam and your code in your projd-managed repo are both plain files on disk. You can grep them, diff them, back them up with git, sync them with Syncthing, and switch tools next year without an export script.
-
-You can use either one alone. They just happen to fit.
+**Website & docs: [thereisnospoon.org](https://thereisnospoon.org)** — [Quickstart](https://thereisnospoon.org/docs/quickstart/) · [Claude Code setup](https://thereisnospoon.org/docs/claude-code/) · [Concepts](https://thereisnospoon.org/docs/concepts/) · [Reference](https://thereisnospoon.org/docs/reference/)
 
 ---
 
 ## Principles
 
-**Local-first, always.** Your files on your disk. Cloud AI is opt-in, one config line, never required.
+**Local-first, always.** Your files, your disk, your machine. No cloud account required.
 
-**Filesystem-native.** Markdown for knowledge. Git worktrees for parallel work. No proprietary bundles, no export steps, no lock-in. If the project disappears tomorrow, your data is still yours and still readable.
+**Files are the source of truth.** Every memory and note is a markdown file with YAML frontmatter — git-diffable, greppable, hand-editable. The database is a rebuildable index; delete it and lose nothing.
 
-**Opinionated, single-user.** These are tools built by someone who uses them every day, not platforms chasing every audience. The common paths are paved. The sharp edges are real — but they're documented.
+**Built for a fleet, not a lone agent.** Real coordination primitives — a dependency-aware ready-queue, atomic lease-based task claiming, shared research trials — so agents divide labor instead of colliding.
 
-**Durable artifacts over ephemeral state.** A `HANDOFF.md` you can open in vim survives a dead laptop. A conversation history in an app's memory does not.
+**Curation proposes, humans dispose.** Automated tidying only proposes; applying is an explicit action. Supersession preserves provenance, so nothing is silently rewritten.
 
 **The agent is a tool, not a teammate.** You stay the protagonist. The infrastructure exists so the model does more useful work — not so you do less thinking.
 
@@ -78,4 +53,4 @@ You can use either one alone. They just happen to fit.
 
 ## License
 
-Everything here is MIT unless a repo says otherwise. Contributions welcome; see each project's `CONTRIBUTING.md`.
+Everything here is MIT unless a repo says otherwise.
