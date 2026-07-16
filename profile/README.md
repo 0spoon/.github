@@ -27,7 +27,7 @@ The agent doesn't know your project. It doesn't remember yesterday. It forgets w
 ![Last commit](https://img.shields.io/github/last-commit/0spoon/seamless?style=flat-square)
 ![Top language](https://img.shields.io/github/languages/top/0spoon/seamless?style=flat-square)
 ![Open issues](https://img.shields.io/github/issues/0spoon/seamless?style=flat-square)
-![License](https://img.shields.io/github/license/0spoon/seamless?style=flat-square)
+![License](https://img.shields.io/github/license/0spoon/seamless?style=flat-square&cacheSeconds=3600)
 
 A local-first memory and coordination substrate for AI coding agents. Seamless gives a fleet of agents — Claude Code and any MCP-compatible client — a shared, durable memory and a way to divide work without colliding: memories with a supersession lifecycle, hybrid recall, a dependency-aware task queue with lease-based claiming, captured plans, and research trials. What one agent learns, the next one knows.
 
