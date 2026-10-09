@@ -20,20 +20,9 @@ The agent doesn't know your project. It doesn't remember yesterday. It forgets w
 
 ---
 
-## Projects
+## Seamless has moved
 
-### [Seamless](https://github.com/0spoon/seamless) — _memory and coordination for agent fleets_
-
-![Last commit](https://img.shields.io/github/last-commit/0spoon/seamless?style=flat-square)
-![Top language](https://img.shields.io/github/languages/top/0spoon/seamless?style=flat-square)
-![Open issues](https://img.shields.io/github/issues/0spoon/seamless?style=flat-square)
-![License](https://img.shields.io/github/license/0spoon/seamless?style=flat-square&cacheSeconds=3600)
-
-A local-first memory and coordination substrate for AI coding agents. Seamless gives a fleet of agents — Claude Code and any MCP-compatible client — a shared, durable memory and a way to divide work without colliding: memories with a supersession lifecycle, hybrid recall, a dependency-aware task queue with lease-based claiming, captured plans, and research trials. What one agent learns, the next one knows.
-
-Durable knowledge is stored as markdown files on disk. A single Go binary indexes it, serves it over MCP, and renders a web console for inspection. No CGO, no Node, no separate vector engine, no cloud account.
-
-**Website & docs: [thereisnospoon.org](https://thereisnospoon.org)** — [Quickstart](https://thereisnospoon.org/docs/quickstart/) · [Claude Code setup](https://thereisnospoon.org/docs/claude-code/) · [Concepts](https://thereisnospoon.org/docs/concepts/) · [Reference](https://thereisnospoon.org/docs/reference/)
+Seamless now lives at **[github.com/arctop/seamless](https://github.com/arctop/seamless)** and is published by [Arctop](https://arctop.com). Website & docs: **[thereisnospoon.org](https://thereisnospoon.org)**.
 
 ---
 
